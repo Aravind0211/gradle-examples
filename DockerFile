@@ -1,5 +1,4 @@
-FROM node :14-alpine3.16
-WORKDIR /gradle-examples
-COPY . .
-RUN npm install 
-CMD ["npm","start"]
+FROM openjdk:17
+ADD build/libs/crm-service-0.0.1-SNAPSHOT.jar crmservice.jar
+EXPOSE 9070
+ENTRYPOINT ["java", "-jar","crmservice.jar"]
